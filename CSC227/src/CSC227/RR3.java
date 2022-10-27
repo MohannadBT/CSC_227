@@ -76,7 +76,7 @@ public class RR3 {
 									+ "\t" + 0);
 							time += Remaining[i];
 							this.wt[i] = time - rq.pc[i].burstTime;
-							 System.out.println("i="+(i+1)+" wt:"+this.wt[i]);
+//							System.out.println("i="+(i+1)+" wt:"+this.wt[i]);
 							Remaining[i] = 0; // process smaller than quantum so its out
 							memorySize += memory[i];
 							full = false;
