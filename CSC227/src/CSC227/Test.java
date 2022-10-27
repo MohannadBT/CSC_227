@@ -34,7 +34,7 @@ public class Test {
 		System.out.println("RR3:  \t " + String.format("%.3f", r3.avgWatingTime) + " \t "
 				+ String.format("%.3f", r3.avgTurnAroundTime));
 //		System.out.println("avg turnAroud time RR3: "+String.format("%.3f", r3.avgTurnAroundTime()));
-		System.out.println("RR3:  \t " + String.format("%.3f", r5.avgWatingTime) + " \t "
+		System.out.println("RR5:  \t " + String.format("%.3f", r5.avgWatingTime) + " \t "
 				+ String.format("%.3f", r5.avgTurnAroundTime));
 //		System.out.println("avg turnAroud time RR3: "+String.format("%.3f", r5.avgTurnAroundTime()));
 	}

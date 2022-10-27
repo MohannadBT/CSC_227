@@ -2,22 +2,22 @@ package CSC227;
 
 public class RR3 {
 	int quantum = 3;
-	int wt[];
-	int tt[];
+	int wt[];//waiting time
+	int tt[];//turn around time
 	static double avgWatingTime;
 	static double avgTurnAroundTime;
 
 	public RR3(Load l) {
 		wt = new int[l.nb];
 		tt = new int[l.nb];
-		String[] ArrayOfRR3NAMES = new String[l.nb];
-		int[] ArrayOfRR3ID = new int[l.nb];
+//		String[] ArrayOfRR3NAMES = new String[l.nb];
+//		int[] ArrayOfRR3ID = new int[l.nb];
 		int[] ArrayOfRR3Memory = new int[l.nb];
 		int MemorySize = 8192;
-		processPCB(ArrayOfRR3NAMES, ArrayOfRR3ID, l, l.nb, MemorySize, ArrayOfRR3Memory);
+		processPCB(l, l.nb, MemorySize, ArrayOfRR3Memory);
 	}
 
-	public void processPCB(String NAMES[], int id[], Load nq, int length, int memorySize, int memory[]) {
+	public void processPCB(Load nq, int length, int memorySize, int memory[]) {
 		if (memorySize < nq.pc[0].memory) {
 			System.out.println("Error the memory size is not enough");
 		} else {
@@ -29,36 +29,57 @@ public class RR3 {
 
 			int time = 0;
 			boolean done;
-			boolean full;
+			boolean full = false;
 			Load rq = new Load();
-			int counter = 0;
-			
-			for (int j = 0; j < length; j++) {}
-			
+			// int counter = 0;
+			int holder = 0;
+			int j;
+			// int Remaining;
+
+			// for (int j = 0; j < length; j++) {}
+
 			while (true) {
 				done = true;
 
-				for (int i = 0; i < length; i++) {
+				if (!full)
+					for (j = holder; j < length; j++) {
+						memory[j] = nq.pc[j].memory;
+						if (memorySize > memory[j]) {
+							memorySize -= memory[j];
+							rq.pc[j] = nq.pc[j];
+							rq.nb++;
+						} else {
+							full = true;
+							// System.out.println("j:"+j+ " holder:"+holder);
+							break;
+						}
+						holder++;
+					}
 
+				for (int i = 0; i < rq.nb; i++) {
+
+					// Remaining[i] = rq.pc[i].burstTime;
+
+					// if(rq.pc[i].burstTime > 0) {}
 					if (Remaining[i] > 0) // as long as we have a remianing go inside
 					{
 						done = false; // if all remainings are zero it will not go inside this
 
 						if (Remaining[i] > quantum) {
-//						System.out.println("selected:"+arrP[i].id+" time: "+time+" starting br: "+copyRemaining[i]+" stopping br:"+(copyRemaining[i]-quantum));
-							System.out.println(nq.pc[i].name + "\t " + time + "\t " + Remaining[i] + "\t"
-									+ (Remaining[i] - quantum));
+							System.out.println(rq.pc[i].name + "\t " + rq.pc[i].id + "\t " + time + "\t " + Remaining[i]
+									+ "\t" + (Remaining[i] - quantum));
 							time += quantum;
 							Remaining[i] -= quantum;
-						}
-
-						else // burst time is smaller
+						} else // burst time is smaller
 						{
-//						System.out.println("selected:"+arrP[i].id+" time: "+time+" starting br: "+copyRemaining[i]+" stopping br:0");
-							System.out.println(nq.pc[i].id + "\t " + time + "\t " + Remaining[i] + "\t" + 0);
+							System.out.println(rq.pc[i].name + "\t " + rq.pc[i].id + "\t " + time + "\t " + Remaining[i]
+									+ "\t" + 0);
 							time += Remaining[i];
-							this.wt[i] = time - nq.pc[i].burstTime;
+							this.wt[i] = time - rq.pc[i].burstTime;
+							 System.out.println("i="+(i+1)+" wt:"+this.wt[i]);
 							Remaining[i] = 0; // process smaller than quantum so its out
+							memorySize += memory[i];
+							full = false;
 						}
 					} // if
 				} // for
@@ -69,13 +90,13 @@ public class RR3 {
 			} // while
 
 			for (int i = 0; i < length; i++)
-				this.tt[i] = nq.pc[i].burstTime + this.wt[i];
+				this.tt[i] = rq.pc[i].burstTime + this.wt[i];
 
-			double totalAT = 0;
+			double totalWT = 0;
 			for (int i = 0; i < this.wt.length; i++) {
-				totalAT += this.wt[i];
+				totalWT += this.wt[i];
 			}
-			avgWatingTime = totalAT / this.wt.length;
+			avgWatingTime = totalWT / this.wt.length;
 
 			double totalTT = 0;
 			for (int i = 0; i < this.tt.length; i++) {
@@ -85,3 +106,18 @@ public class RR3 {
 		}
 	}
 }
+
+//j = holder;
+//while(j < length) {
+//	memory[j] = nq.pc[j].memory;
+//	if (memorySize > memory[j]) {
+//		memorySize -= memory[j];
+//		rq.pc[j] = nq.pc[j];
+//		rq.nb++;
+//	} else {
+//		full = true;
+//		break;
+//	}
+//	holder ++;
+//	j++;
+//}

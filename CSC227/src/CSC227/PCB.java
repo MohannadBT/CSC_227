@@ -9,7 +9,9 @@ public class PCB implements Serializable {
 	public int memory;
 	public String processState;
 	public int watingTime;
-	public int turnAroundTime;
+	public int turnAroundTime;	
+	public int ArrivelTime;
+
 
 	public PCB() {
 	}
