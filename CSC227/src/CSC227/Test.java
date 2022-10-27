@@ -16,7 +16,7 @@ public class Test
 
 	    System.out.println("----------------------------------RR3");
   	 
-	    RR3 r3 = new RR3(l.nb);		  
+	    RR3 r3 = new RR3(l);		  
 	    r3.processPCB(l.pc,l.nb);
 	     
 	    System.out.println("----------------------------------RR5");
@@ -33,7 +33,7 @@ public class Test
 //		System.out.println("avg turnAroud time SJF: "+String.format("%.3f", s.avrTurnAround));
 		System.out.println("RR3:  \t "+String.format("%.3f", r3.avgWatingTime)+" \t "+String.format("%.3f", r3.avgTurnAroundTime));
 //		System.out.println("avg turnAroud time RR3: "+String.format("%.3f", r3.avgTurnAroundTime()));
-		System.out.println("RR3:  \t "+String.format("%.3f", r5.avgWatingTime())+" \t "+String.format("%.3f", r5.avgTurnAroundTime()));
+		System.out.println("RR3:  \t "+String.format("%.3f", r5.avgWatingTime)+" \t "+String.format("%.3f", r5.avgTurnAroundTime));
 //		System.out.println("avg turnAroud time RR3: "+String.format("%.3f", r5.avgTurnAroundTime()));
 	 }
 }

@@ -9,9 +9,9 @@ public class RR3
 	static double avgTurnAroundTime;
 	int MemorySize = 8192;
 	
-	public RR3(int size) {
-		wt = new int [size];
-		tt = new int [size];
+	public RR3(Load l) {
+		wt = new int [l.nb];
+		tt = new int [l.nb];
 	}
 	public void processPCB(PCB arrP[], int n) 
 	{ 
