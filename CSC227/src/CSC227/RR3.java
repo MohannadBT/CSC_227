@@ -10,7 +10,7 @@ public class RR3   {
 		wt = new int [size];
 		tt = new int [size];
 	}
-	 public LinkedList processPCB(PCB arrP[], int n) {
+	 public void processPCB(PCB arrP[], int n) {
            
     int Remaining[] = new int[n];
     for (int i = 0 ; i < n ; i++)
@@ -55,8 +55,8 @@ public class RR3   {
     } // while
     
     findTurnAroundTime(arrP,n);
-    LinkedList temp = copy(arrP,n);
-    return temp;
+//    LinkedList temp = copy(arrP,n);
+//    return temp;
 }
 
 public void findTurnAroundTime(PCB arrP[], int n) {
@@ -90,53 +90,53 @@ public float avgTurnAroundTime() {
 //		 }
 //	 }
 	 
-	 public LinkedList copy (PCB arrP[],int n) {
-		 LinkedList l = new LinkedList();
-		 for(int i = 0 ; i<n ; i++) {
-			 l.insert(arrP[i]);
-			 l.retrieve().id = arrP[i].id;
-			 l.retrieve().burstTime = arrP[i].burstTime;
-			 l.retrieve().watingTime = this.wt[i];
-			 l.retrieve().turnAroundTime = this.tt[i];
-		 }
-		 return l;
-	 }
-	 public static void main (String args[]) {
-		 
-		 Load l = new Load();
-		  l.loadFromFile("C:\\Users\\hossa\\Desktop\\227\\testdata2.txt");
-		  RR3 r = new RR3(l.nb);
-//		  int arr[] = new int[l.nb];
-		  
-		  
-	     LinkedList list =	r.processPCB(l.pc,l.nb);
-	     System.out.println("----------------------------list");
-	     list.findfirst();
-	     while(!list.last()) {
-	    	      System.out.println("id: "+list.retrieve().id+" burstTime: "+
-	    			 list.retrieve().burstTime+" wating time: "+list.retrieve().watingTime+
-	    			 " turnAroundtime: "+list.retrieve().turnAroundTime+"\n"); 
-	    	        list.findnext();
-	                        }
-
-	     System.out.println("id "+list.retrieve().id+" burstTime: "+
-    			 list.retrieve().burstTime+" wating time: "+list.retrieve().watingTime+
-    			 " turnAroundtime: "+list.retrieve().turnAroundTime+"\n");
-    	 
-    	 
-//		System.out.println("---------------------------- wating");
-//		for(int i = 0 ; i<r.wt.length; i++) {
-//			System.out.println(r.wt[i]);
-//		}
-//		r.findTurnAroundTime(l.pc,l.nb);
-//		System.out.println("---------------------------- tt");
-//		for(int i = 0 ; i<r.tt.length; i++) {
-//			System.out.println(r.tt[i]);
-//		}
-		System.out.println("---------------------------- avg");
-		System.out.println("avg wating time: "+r.avgWatingTime());
-		System.out.println("avg turnAroud time: "+r.avgTurnAroundTime());
-	 }
-	 
+//	 public LinkedList copy (PCB arrP[],int n) {
+//		 LinkedList l = new LinkedList();
+//		 for(int i = 0 ; i<n ; i++) {
+//			 l.insert(arrP[i]);
+//			 l.retrieve().id = arrP[i].id;
+//			 l.retrieve().burstTime = arrP[i].burstTime;
+//			 l.retrieve().watingTime = this.wt[i];
+//			 l.retrieve().turnAroundTime = this.tt[i];
+//		 }
+//		 return l;
+//	 }
+//	 public static void main (String args[]) {
+//		 
+//		 Load l = new Load();
+//		  l.loadFromFile("C:\\Users\\hossa\\Desktop\\227\\testdata2.txt");
+//		  RR3 r = new RR3(l.nb);
+////		  int arr[] = new int[l.nb];
+//		  
+//		  
+//	     LinkedList list =	r.processPCB(l.pc,l.nb);
+//	     System.out.println("----------------------------list");
+//	     list.findfirst();
+//	     while(!list.last()) {
+//	    	      System.out.println("id: "+list.retrieve().id+" burstTime: "+
+//	    			 list.retrieve().burstTime+" wating time: "+list.retrieve().watingTime+
+//	    			 " turnAroundtime: "+list.retrieve().turnAroundTime+"\n"); 
+//	    	        list.findnext();
+//	                        }
+//
+//	     System.out.println("id "+list.retrieve().id+" burstTime: "+
+//    			 list.retrieve().burstTime+" wating time: "+list.retrieve().watingTime+
+//    			 " turnAroundtime: "+list.retrieve().turnAroundTime+"\n");
+//    	 
+//    	 
+////		System.out.println("---------------------------- wating");
+////		for(int i = 0 ; i<r.wt.length; i++) {
+////			System.out.println(r.wt[i]);
+////		}
+////		r.findTurnAroundTime(l.pc,l.nb);
+////		System.out.println("---------------------------- tt");
+////		for(int i = 0 ; i<r.tt.length; i++) {
+////			System.out.println(r.tt[i]);
+////		}
+//		System.out.println("---------------------------- avg");
+//		System.out.println("avg wating time: "+r.avgWatingTime());
+//		System.out.println("avg turnAroud time: "+r.avgTurnAroundTime());
+//	 }
+//	 
 
 }
