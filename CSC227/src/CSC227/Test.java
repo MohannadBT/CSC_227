@@ -15,7 +15,6 @@ public class Test {
 		System.out.println("----------------------------------RR3");
 
 		RR3 r3 = new RR3(l);
-		//r3.processPCB(l.pc, l.nb);
 
 		System.out.println("----------------------------------RR5");
 
