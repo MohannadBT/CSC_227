@@ -3,8 +3,8 @@ package CSC227;
 public class RR3   {
 	
 	int quantum = 3;
-	int wt[];
-	int tt[];
+	int wt[]; //waiting time
+	int tt[]; //turn around time
 	
 	public RR3(int size) {
 		wt = new int [size];
