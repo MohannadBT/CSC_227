@@ -18,8 +18,8 @@ public class Test {
 
 		System.out.println("----------------------------------RR5");
 
-		RR5 r5 = new RR5(l.nb);
-		r5.processPCB(l.pc, l.nb);
+		RR5 r5 = new RR5(l);
+		//r5.processPCB(l.pc, l.nb);
 
 		System.out.println("---------------------------- avg ");
 
